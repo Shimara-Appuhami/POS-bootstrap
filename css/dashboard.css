@@ -1,0 +1,57 @@
+.container-fluid{
+    background: #60bc4b;
+}
+.navbar-toggler{
+    position: relative;
+    left: -1450px;
+    border: 3px solid #60bc4b;
+}
+
+.offcanvas{
+    width: 200px;
+    height: auto;
+    background: #60bc4b;
+    margin-top: 70px;
+
+}
+/*.offcanvas-body{*/
+/*    width: 200px;*/
+/*    font-size: 20px;*/
+/*    text-align: left;*/
+/*    background: #1da839;*/
+
+/*}*/
+.nav-item img{
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+.card-group{
+    width: 1000px;
+    height: 300px;
+    margin: auto;
+    position: relative;
+    top: 300px;
+}
+.card-title{
+    text-align: center;
+}
+.card-text{
+    width: 60px;
+    height: 60px;
+    margin: auto;
+    text-align: center;
+    font-size: 40px;
+    background: #60bc4b;
+}
+.keels-img{
+    width: 200px;
+    height: 60px;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
