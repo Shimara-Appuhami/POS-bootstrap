@@ -21,44 +21,44 @@
 }
 
 .custom-card:hover {
-    transform: scale(1.02); /* Subtle scale effect on hover */
+    transform: scale(1.02);
 }
 
-/* Title customization */
+
 .form-title {
     color: #60bc4b;
     font-weight: 700;
-    font-size: 2rem; /* Larger title for emphasis */
+    font-size: 2rem;
     text-transform: uppercase;
     letter-spacing: 1.2px;
     margin-bottom: 25px;
     text-align: center;
 }
 
-/* Input field customization */
+
 .form-control {
-    border-radius: 10px; /* Moderate rounding */
+    border-radius: 10px;
     padding: 12px;
-    border: 1.5px solid #60bc4b; /* Thicker border */
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05); /* Softer shadow */
+    border: 1.5px solid #60bc4b;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
     font-size: 1rem;
-    color: #333; /* Darker text for clarity */
+    color: #333;
 }
 
 .form-control:focus {
-    box-shadow: 0 4px 10px rgba(96, 188, 75, 0.3); /* Enhanced shadow on focus */
+    box-shadow: 0 4px 10px rgba(96, 188, 75, 0.3);
     outline: none;
     border-color: #60bc4b;
 }
 
 ::placeholder {
-    color: #aaa; /* Slightly darker placeholder text */
+    color: #aaa;
     font-style: italic;
 }
 
-/* Custom button */
+
 .custom-btn {
-    background: linear-gradient(145deg, #60bc4b, #3f8d33); /* Improved gradient button */
+    background: linear-gradient(145deg, #60bc4b, #3f8d33);
     border: none;
     border-radius: 10px;
     color: white;
@@ -71,9 +71,9 @@
 }
 
 .custom-btn:hover {
-    background-color: #3f8d33; /* Darker green on hover */
-    transform: translateY(-5px); /* Increased lift effect */
-    box-shadow: 0 6px 20px rgba(63, 141, 51, 0.4); /* Stronger shadow */
+    background-color: #3f8d33;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(63, 141, 51, 0.4);
 }
 
 /* Labels */
@@ -87,7 +87,7 @@
 @media (max-width: 768px) {
     .custom-card {
         width: 100%;
-        padding: 20px; /* Reduced padding on smaller screens */
+        padding: 20px;
         margin: 20px;
     }
 }
