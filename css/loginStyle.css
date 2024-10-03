@@ -62,3 +62,40 @@ img{
     top: -36px;
     z-index: 1;
 }
+@media (max-width: 768px) {
+    .card {
+        width: 80%;
+        height: auto;
+        margin: 40px auto;
+    }
+
+    .input-group, .col-auto {
+        width: 85%;
+    }
+
+    img {
+        height: 180px;
+    }
+
+    #loginHeader {
+        font-size: 22px;
+    }
+}
+@media (max-width: 375px) {
+    .card {
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    .input-group, .col-auto {
+        width: 100%;
+    }
+
+    img {
+        height: 150px;
+    }
+
+    #loginHeader {
+        font-size: 20px;
+    }
+}
