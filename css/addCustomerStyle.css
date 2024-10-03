@@ -5,8 +5,8 @@
     height: auto;
     background: linear-gradient(145deg, #f3fef3, #f9f9f9);
     border-radius: 16px;
-    border: 2px solid #60bc4b;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+    box-shadow: 0 10px 30px rgb(136, 128, 128);
     padding: 40px;
     transition: transform 0.3s ease-in-out;
 
@@ -83,10 +83,18 @@
     margin-bottom: 8px;
 }
 
-@media (max-width: 768px) {
+@media all and (max-width: 768px) {
     .custom-card {
         width: 100%;
         padding: 20px;
         margin: 20px;
     }
+}
+@media all and (max-width: 375px) {
+    .custom-card {
+        width: 90%;
+        padding: 20px;
+        margin: 20px;
+    }
+
 }

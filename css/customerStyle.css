@@ -1,8 +1,8 @@
-body{
-
+body {
     overflow: hidden;
 }
-main{
+
+main {
     width: 900px;
     height: 700px;
     background: #ffffff;
@@ -12,12 +12,10 @@ main{
     right: 0;
     bottom: 0;
     margin: auto;
-
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-
 }
 
-table{
+table {
     width: 300px;
     height: 400px;
     color: #f2f2f2;
@@ -28,49 +26,49 @@ table{
     bottom: 50px;
     margin: auto;
 }
-h1{
+
+h1 {
     width: 900px;
     height: 50px;
     text-align: center;
-    font-family: "Arial",sans-serif;
+    font-family: "Arial", sans-serif;
     position: relative;
     font-size: 26px;
     color: #ffffff;
     background: #60bc4b;
     font-weight: 700;
 }
-.d-flex{
-    font-family: "Arial",sans-serif;
 
+.d-flex {
+    font-family: "Arial", sans-serif;
     position: relative;
     top: -35px;
     left: 650px;
-
 }
-.d-flex img {
 
+.d-flex img {
     width: 17px;
     height: 17px;
     position: relative;
     top: 5px;
     left: 140px;
 }
-.form-control{
+
+.form-control {
     width: 150px;
     height: 35px;
     background: #aaa9a9;
-    border-radius: 30px ;
+    border-radius: 30px;
     border: none;
     position: relative;
-    /*top: -40px;*/
     left: -620px;
-
 }
-.btn:nth-child(2){
+
+.btn:nth-child(2) {
     width: 120px;
     height: 40px;
-    border:3px solid #60bc4b;
-    border-radius: 30px ;
+    border: 3px solid #60bc4b;
+    border-radius: 30px;
     color: #60bc4b;
     background: transparent;
     font-size: 15px;
@@ -79,19 +77,20 @@ h1{
     position: relative;
     right: -750px;
 }
-.table-head tr th{
+
+.table-head tr th {
     background: #69cc52;
     color: #ffffff;
     font-size: 18px;
     font-weight: 700;
 }
-.btn:nth-child(5){
+
+.btn:nth-child(5) {
     width: 90px;
     height: 35px;
-    border:3px solid rgb(243, 46, 46);
-    border-radius: 30px ;
+    border: 3px solid rgb(243, 46, 46);
+    border-radius: 30px;
     color: rgb(243, 46, 46);
-    /*border: transparent;*/
     background: transparent;
     font-size: 13px;
     font-weight: 550;
@@ -100,11 +99,12 @@ h1{
     bottom: -510px;
     left: 650px;
 }
-.btn:nth-child(6){
+
+.btn:nth-child(6) {
     width: 90px;
     height: 35px;
-    border:3px solid #19a2ca;
-    border-radius: 30px ;
+    border: 3px solid #19a2ca;
+    border-radius: 30px;
     color: #19a2ca;
     background: transparent;
     font-size: 13px;
@@ -114,7 +114,8 @@ h1{
     bottom: -510px;
     left: 690px;
 }
-img{
+
+img {
     width: 150px;
     height: 150px;
     object-fit: cover;
@@ -122,4 +123,84 @@ img{
     position: absolute;
     top: 65px;
     left: 375px;
+}
+
+/* Responsive styling for mobile devices */
+@media all and (max-width: 375px) {
+    main {
+        width: 100%;
+        height: auto;
+        padding: 10px;
+        margin: 20px auto;
+    }
+
+    h1 {
+        width: auto;
+        height: auto;
+        font-size: 22px;
+    }
+
+    .d-flex {
+        top: -20px;
+        left: 0;
+        text-align: center;
+    }
+
+    .form-control {
+        width: 100%;
+        left: 0;
+        margin-top: 20px;
+    }
+
+    .btn:nth-child(2),
+    .btn:nth-child(5),
+    .btn:nth-child(6) {
+        width: 100%;
+        margin-top: 15px;
+        height: 40px;
+        border-radius: 15px;
+    }
+
+    table {
+        width: max-content;
+        height: auto;
+        margin-top: 200px;
+    }
+
+    img {
+        width: 90px;
+        height: 90px;
+        position: relative;
+        top: -90px;
+        left: -20px;
+    }
+    .table-head tr th {
+        font-size: 10px;
+    }
+    .rows{
+        font-size: 8px;
+    }
+    .btn:nth-child(2) {
+        width: 130px;
+        height: 36px;
+        position: relative;
+        top: 70px;
+        right: -220px;
+    }
+    .btn:nth-child(5),
+    .btn:nth-child(6) {
+        width: 70px;
+        height: 35px;
+        position: relative;
+        bottom: -230px;
+        left: 180px;
+    }
+   .form-control{
+       width: 130px;
+       height: 30px;
+       position: relative;
+       top: 40px;
+
+
+   }
 }

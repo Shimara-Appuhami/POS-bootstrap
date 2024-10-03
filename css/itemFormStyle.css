@@ -1,15 +1,16 @@
+
 body {
     background-color: #f1f1f1;
     font-family: 'Inter', sans-serif;
 }
 
+
 .item-main {
-    width: 1000px;
-    height: 600px;
+    width: 90%;
+    max-width: 1000px;
+    height: auto;
     background: #ffffff;
-    position: absolute;
-    left: 0;
-    right: 0;
+    position: relative;
     top: 50px;
     margin: auto;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.15);
@@ -26,7 +27,6 @@ body {
     font-weight: bold;
     font-size: 26px;
     background: #69cc52;
-
 }
 
 
@@ -36,8 +36,7 @@ button.btn-success {
     font-size: 16px;
     padding: 10px 20px;
     border-radius: 10px;
-    position: relative;
-    right: -700px;
+    margin-top: 20px;
     transition: background 0.3s ease;
 }
 
@@ -46,12 +45,10 @@ button.btn-success:hover {
     border-color: #4fa83f;
 }
 
-
 .search-bar input {
-    width: 320px;
+    width: 100%;
+    max-width: 320px;
     padding: 10px;
-    position: relative;
-    left: -500px;
     border-radius: 8px;
     border: 1px solid #ccc;
     font-size: 16px;
@@ -73,7 +70,8 @@ button.btn-success:hover {
 
 
 .item-card {
-    width: 150px;
+    width: 100%;
+    max-width: 150px;
     height: 170px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     border: none;
@@ -94,6 +92,7 @@ button.btn-success:hover {
     border-bottom: 1px solid #f1f1f1;
 }
 
+
 .card-title {
     text-align: center;
     color: #333;
@@ -108,14 +107,55 @@ button.btn-success:hover {
     font-size: 14px;
     margin-top: 5px;
 }
-.btn{
+
+
+.btn {
     border: 3px solid #69cc52;
     color: #69cc52;
 }
-.category-img{
+
+
+.category-img {
     width: 30px;
     height: 30px;
     object-fit: cover;
     border-radius: 50%;
     margin-right: 10px;
+}
+
+@media (max-width: 768px) and (max-width: 500px){
+    .item-main {
+        width: 100%;
+        padding: 20px;
+    }
+
+
+}
+@media all and (max-width: 375px) {
+    .form-title {
+        font-size: 20px;
+    }
+
+    .card-title {
+        font-size: 14px;
+    }
+
+    #button-success {
+        font-size: 10px;
+    }
+
+    .item-card {
+        width: 60px;
+        height: 120px;
+    }
+
+    .btn {
+        width: 65px;
+        height: auto;
+        font-size: 10px;
+    }
+    .btn img{
+        width: 20px;
+        height: 20px;
+    }
 }
