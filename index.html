@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<main>
+<main class="nav-section">
     <nav class="navbar bg-body-tertiary fixed-top">
 
         <div class="container-fluid">
@@ -30,7 +30,7 @@
                 <div class="offcanvas-body">
                     <div class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#"><img src="assets/icons/icons8-about-me-50%20(1).png">CUSTOMERS </a>
+                            <a class="nav-link active" aria-current="page" href=""><img src="assets/icons/icons8-about-me-50%20(1).png">CUSTOMERS </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#"><img src="assets/icons/icons8-open-box-50.png">ITEMS</a>
@@ -71,139 +71,152 @@
         </div>
     </div>
 <!--customer-->
-<header class="header">
-    <h1>Customer Management</h1>
-</header>
+<main class="customer-section">
+    <header class="header">
+        <h1>Customer Management</h1>
+    </header>
 
-<main class="content">
-    <div class="toolbar">
-        <button class="btn primary">+ Add Customer</button>
-        <input type="search" class="search-input" placeholder="Search by Name, ID, or Email">
-    </div>
-
-    <div class="table-container">
-        <table class="customer-table">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Address</th>
-                <th>NIC</th>
-                <th>Email</th>
-                <th>Phone</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1</td><td>John Doe</td><td>123 Main St</td><td>123456789V</td><td>john@example.com</td><td>1234567890</td>
-            </tr>
-            <tr>
-                <td>2</td><td>Jane Doe</td><td>456 Elm St</td><td>987654321V</td><td>jane@example.com</td><td>9876543210</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="button-group">
-        <button class="btn danger">Delete</button>
-        <button class="btn secondary">Update</button>
-    </div>
-</main>
-
-<!--item-->
-<header class="header">
-    <h1>Item Management</h1>
-</header>
-
-<main class="content">
-    <section class="container mt-5">
-        <h1>Item Details</h1>
+    <main class="content">
         <div class="toolbar">
-            <button type="button" class="btn primary">+ Add Item</button>
-            <input class="form-control mb-3 search-input" type="search" placeholder="Search by Name or ID">
+            <button class="btn primary">+ Add Customer</button>
+            <input type="search" class="search-input" placeholder="Search by Name, ID, or Email">
         </div>
 
         <div class="table-container">
-            <table class="item-table">
+            <table class="customer-table">
                 <thead>
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
+                    <th>Address</th>
+                    <th>NIC</th>
+                    <th>Email</th>
+                    <th>Phone</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td>1</td>
-                    <td>Apple</td>
-                    <td>$10</td>
-                    <td>100</td>
+                    <td>1</td><td>John Doe</td><td>123 Main St</td><td>123456789V</td><td>john@example.com</td><td>1234567890</td>
                 </tr>
                 <tr>
-                    <td>2</td>
-                    <td>Banana</td>
-                    <td>$5</td>
-                    <td>200</td>
+                    <td>2</td><td>Jane Doe</td><td>456 Elm St</td><td>987654321V</td><td>jane@example.com</td><td>9876543210</td>
                 </tr>
                 </tbody>
             </table>
         </div>
 
         <div class="button-group">
-            <button type="button" class="btn danger">Delete</button>
-            <button type="button" class="btn secondary">Update</button>
+            <button class="btn danger">Delete</button>
+            <button class="btn secondary">Update</button>
         </div>
-    </section>
+    </main>
+
 </main>
+
+
+<!--item-->
+
+<main class="item-section">
+    <header class="header">
+        <h1>Item Management</h1>
+    </header>
+
+    <main class="content">
+        <section class="container mt-5">
+            <h1>Item Details</h1>
+            <div class="toolbar">
+                <button type="button" class="btn primary">+ Add Item</button>
+                <input class="form-control mb-3 search-input" type="search" placeholder="Search by Name or ID">
+            </div>
+
+            <div class="table-container">
+                <table class="item-table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Apple</td>
+                        <td>$10</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Banana</td>
+                        <td>$5</td>
+                        <td>200</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="btn danger">Delete</button>
+                <button type="button" class="btn secondary">Update</button>
+            </div>
+        </section>
+    </main>
+</main>
+
 <!--order-->
-<header class="header">
-    <h1>Order Management</h1>
-</header>
+<main class="order-section">
+    <header class="header">
+        <h1>Order Management</h1>
+    </header>
 
-<main class="content">
-    <section class="container mt-5">
-        <h1>Order Details</h1>
-        <div class="toolbar">
-            <button type="button" class="btn primary">+ Add Order</button>
-            <input class="form-control mb-3 search-input" type="search" placeholder="Search by Customer ID or Item ID">
-        </div>
+    <main class="content">
+        <section class="container mt-5">
+            <h1>Order Details</h1>
+            <div class="toolbar">
+                <button type="button" class="btn primary">+ Add Order</button>
+                <input class="form-control mb-3 search-input" type="search" placeholder="Search by Customer ID or Item ID">
+            </div>
 
-        <div class="table-container">
-            <table class="order-table">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Customer ID</th>
-                    <th>Item ID</th>
-                    <th>Quantity</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>10</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+            <div class="table-container">
+                <table class="order-table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Customer ID</th>
+                        <th>Item ID</th>
+                        <th>Quantity</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>10</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
 
-        <div class="button-group">
-            <button type="button" class="btn danger">Delete</button>
-            <button type="button" class="btn secondary">Update</button>
-        </div>
-    </section>
+            <div class="button-group">
+                <button type="button" class="btn danger">Delete</button>
+                <button type="button" class="btn secondary">Update</button>
+            </div>
+        </section>
+    </main>
+
 </main>
+
 <!--add customer-->
-<main>
+
+<main class="add-customer-section">
     <div class="container-fluid header">
         <div class="logo-section">
             <img src="logo.png" alt="Company Logo" class="logo">
@@ -246,36 +259,37 @@
 </main>
 
 <!--add item-->
-
-<div class="container-fluid header">
-    <div class="logo-section">
-        <img src="logo.png" alt="Company Logo" class="logo">
-        <h1>Inventory Management</h1>
+<main class="add-item-section">
+    <div class="container-fluid header">
+        <div class="logo-section">
+            <img src="logo.png" alt="Company Logo" class="logo">
+            <h1>Inventory Management</h1>
+        </div>
     </div>
-</div>
 
-<main class="content-wrapper">
-    <section class="form-card">
-        <h2 class="form-title">Add Item</h2>
-        <form>
-            <div class="form-group">
-                <label for="name1" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name1" placeholder="Enter item name" required>
-            </div>
-            <div class="form-group">
-                <label for="price" class="form-label">Price</label>
-                <input type="number" class="form-control" id="price" placeholder="Enter item price" required>
-            </div>
-            <div class="form-group">
-                <label for="quantity" class="form-label">Quantity</label>
-                <input type="number" class="form-control" id="quantity" placeholder="Enter item quantity" required>
-            </div>
-            <div class="button-group">
-                <button type="submit" class="btn primary-btn">Submit</button>
-                <button type="button" class="btn danger-btn" id="cancel">Cancel</button>
-            </div>
-        </form>
-    </section>
+    <main class="content-wrapper">
+        <section class="form-card">
+            <h2 class="form-title">Add Item</h2>
+            <form>
+                <div class="form-group">
+                    <label for="name1" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name1" placeholder="Enter item name" required>
+                </div>
+                <div class="form-group">
+                    <label for="price" class="form-label">Price</label>
+                    <input type="number" class="form-control" id="price" placeholder="Enter item price" required>
+                </div>
+                <div class="form-group">
+                    <label for="quantity" class="form-label">Quantity</label>
+                    <input type="number" class="form-control" id="quantity" placeholder="Enter item quantity" required>
+                </div>
+                <div class="button-group">
+                    <button type="submit" class="btn primary-btn">Submit</button>
+                    <button type="button" class="btn danger-btn" id="cancel">Cancel</button>
+                </div>
+            </form>
+        </section>
+    </main>
 </main>
 
 
