@@ -8,14 +8,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
 <!--nav section-->
-<main class="nav-section">
+<main class="container" id="nav">
     <nav class="navbar bg-body-tertiary fixed-top">
 
-        <div class="container-fluid">
-            <img class="keels-img" src="assets/images/img_7.png">
+        <div class="container-fluid" id="navButton">
+            <img class="keels-img" src="assets/images/img_12.png">
             <a class="navbar-brand" href="#"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <!--                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">-->
@@ -28,16 +29,19 @@
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
-                    <div class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <div class="navbar-nav justify-content-end flex-grow-1 pe-3" id="nav-content">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href=""><img src="assets/icons/icons8-about-me-50%20(1).png">CUSTOMERS </a>
+                            <span id="dashboardNav" class="nav-link"><img src="assets/icons/icons8-dashboard-48.png">DASHBOARD </span>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#"><img src="assets/icons/icons8-open-box-50.png">ITEMS</a>
+                            <span id="customerNav" class="nav-link"><img src="assets/icons/icons8-about-me-50%20(1).png">CUSTOMERS </span>
+                        </li>
+                        <li class="nav-item">
+                            <span id="itemNav" class="nav-link" ><img src="assets/icons/icons8-delivered-box-24.png">ITEMS</span>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#"><img src="assets/icons/icons8-cart-26.png">ORDER</a>
+                            <span id="orderNav" class="nav-link"><img src="assets/icons/icons8-cart-24.png">ORDER</span>
                         </li>
                     </div>
                 </div>
@@ -47,32 +51,74 @@
 </main>
 
 <!--dashboard-->
-<div class="card-group d-flex">
-        <div class="card">
-            <img src="assets/images/img_4.png" class="card-img-top" alt="Customer Image">
-            <div class="card-body">
-                <h5 class="card-title">Customer Count</h5>
-                <p class="card-text">3</p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="assets/images/img_5.png" class="card-img-top" alt="Item Image">
-            <div class="card-body">
-                <h5 class="card-title">Item Count</h5>
-                <p class="card-text">3</p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="assets/images/img_3.png" class="card-img-top" alt="Order Image">
-            <div class="card-body">
-                <h5 class="card-title">Total Order Count</h5>
-                <p class="card-text">3</p>
-            </div>
+<main class="container " id="dashboardPage" >
+    <div class="container-fluid">
+        <div class="dashboardBody">
+
+                <!-- Cards for Sales Overview -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card text-white bg-success mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Total Sales</h5>
+                                <p class="card-text">Rs.10,000</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card text-white bg-info mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Total Products</h5>
+                                <p class="card-text">250</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card text-white bg-warning mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Total Customers</h5>
+                                <p class="card-text">150</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Transactions Table -->
+                <h2>Recent Transactions</h2>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Customer</th>
+                        <th>Amount</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>2024-10-21</td>
+                        <td>John Doe</td>
+                        <td>$100</td>
+                    </tr>
+                    <tr>
+                        <td>2024-10-20</td>
+                        <td>Jane Smith</td>
+                        <td>$150</td>
+                    </tr>
+                    <tr>
+                        <td>2024-10-19</td>
+                        <td>Mike Johnson</td>
+                        <td>$200</td>
+                    </tr>
+                    </tbody>
+                </table>
+<!--            </main>-->
         </div>
     </div>
 
+</main>
+
 <!--customer-->
-<main class="customer-section">
+<main class="container" id="customerPage">
     <header class="header">
         <h1>Customer Management</h1>
     </header>
@@ -113,16 +159,16 @@
 </main>
 
 <!--item-->
-<main class="item-section">
+<main class="container" id="itemPage">
     <header class="header">
         <h1>Item Management</h1>
     </header>
     <main class="content">
         <section class="container mt-5">
-            <h1>Item Details</h1>
+<!--            <h1>Item Details</h1>-->
             <div class="toolbar">
                 <button type="button" class="btn primary">+ Add Item</button>
-                <input class="form-control mb-3 search-input" type="search" placeholder="Search by Name or ID">
+                <input type="search" class="search-input" placeholder="Search by item ID , Name">
             </div>
 
             <div class="table-container">
@@ -161,16 +207,16 @@
 </main>
 
 <!--order-->
-<main class="order-section">
+<main class="container" id="orderPage">
     <header class="header">
         <h1>Order Management</h1>
     </header>
     <main class="content">
         <section class="container mt-5">
-            <h1>Order Details</h1>
+<!--            <h1>Order Details</h1>-->
             <div class="toolbar">
                 <button type="button" class="btn primary">+ Add Order</button>
-                <input class="form-control mb-3 search-input" type="search" placeholder="Search by Customer ID or Item ID">
+                <input type="search" class="search-input" placeholder="Search by Order ID">
             </div>
 
             <div class="table-container">
@@ -209,7 +255,7 @@
 </main>
 
 <!--add customer-->
-<main class="add-customer-section">
+<main class="container" id="addCustomerForm">
     <div class="container-fluid header">
         <div class="logo-section">
             <img src="logo.png" alt="Company Logo" class="logo">
@@ -252,7 +298,7 @@
 </main>
 
 <!--add item-->
-<main class="add-item-section">
+<main class="container" id="addItemForm">
     <div class="container-fluid header">
         <div class="logo-section">
             <img src="logo.png" alt="Company Logo" class="logo">
@@ -286,8 +332,74 @@
 
 <!--footer-->
 <footer class="footer">
-    <p>&copy; 2024 Customer Management System. All rights reserved.</p>
+    <p>&copy; 2024 POS Management System. All rights reserved.</p>
 </footer>
+<script src="lib/jquery-3.7.1.min.js"></script>
+<script>
+
+    let dashboard_nav = document.getElementById("dashboardNav");
+    let customer_nav = document.getElementById("customerNav");
+    let item_nav = document.getElementById("itemNav");
+    let order_nav = document.getElementById("orderNav");
+
+    let dashboard_section = document.getElementById("dashboardPage");
+    let customer_section = document.getElementById("customerPage");
+    let item_section = document.getElementById("itemPage");
+    let order_section = document.getElementById("orderPage");
+    let addCustomer=document.getElementById("addCustomerForm");
+    let addItem=document.getElementById("addItemForm");
+
+
+    dashboard_section.style.display="block";
+    customer_section.style.display="none";
+    item_section.style.display="none";
+    order_section.style.display="none";
+    addCustomer.style.display="none";
+    addItem.style.display="none";
+
+
+    customer_nav.addEventListener('click', function () {
+
+        customer_section.style.display="block";
+        item_section.style.display="none";
+        order_section.style.display="none";
+        addCustomer.style.display="none";
+        addItem.style.display="none";
+        dashboard_section.style.display="none";
+    });
+
+    dashboard_nav.addEventListener('click', function () {
+        dashboard_section.style.display="block"
+        customer_section.style.display="none";
+        item_section.style.display="none";
+        order_section.style.display="none";
+        addCustomer.style.display="none";
+        addItem.style.display="none";
+    })
+    item_nav.addEventListener('click', function () {
+        dashboard_section.style.display="none";
+        customer_section.style.display="none";
+        item_section.style.display="block";
+        order_section.style.display="none";
+        addCustomer.style.display="none";
+        addItem.style.display="none";
+    });
+    order_nav.addEventListener('click', function () {
+        dashboard_section.style.display="none";
+        customer_section.style.display="none";
+        item_section.style.display="none";
+        order_section.style.display="block";
+        addCustomer.style.display="none";
+        addItem.style.display="none";
+    });
+
+
+
+
+</script>
+
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
