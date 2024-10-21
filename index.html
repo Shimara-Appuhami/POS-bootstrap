@@ -129,7 +129,7 @@
         </div>
 
         <div class="table-container">
-            <table class="customer-table">
+            <table class="customer-table" >
                 <thead>
                 <tr>
                     <th>ID</th>
@@ -140,13 +140,8 @@
                     <th>Phone</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <td>1</td><td>John Doe</td><td>123 Main St</td><td>123456789V</td><td>john@example.com</td><td>1234567890</td>
-                </tr>
-                <tr>
-                    <td>2</td><td>Jane Doe</td><td>456 Elm St</td><td>987654321V</td><td>jane@example.com</td><td>9876543210</td>
-                </tr>
+                <tbody id="customerTableBody">
+
                 </tbody>
             </table>
         </div>
@@ -181,19 +176,8 @@
                         <th>Quantity</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Apple</td>
-                        <td>$10</td>
-                        <td>100</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Banana</td>
-                        <td>$5</td>
-                        <td>200</td>
-                    </tr>
+                    <tbody id="itemTableBody">
+
                     </tbody>
                 </table>
             </div>
@@ -265,7 +249,7 @@
 <main class="container" id="addCustomerForm">
     <div class="container-fluid header">
         <div class="logo-section">
-            <img src="logo.png" alt="Company Logo" class="logo">
+<!--            <img src="logo.png" alt="Company Logo" class="logo">-->
             <h1>Customer Management</h1>
         </div>
     </div>
@@ -293,10 +277,10 @@
                         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
                     <div class="mb-3">
-                        <label for="number" class="form-label">Number</label>
-                        <input type="text" class="form-control" id="number" required>
+                        <label for="phone" class="form-label">Number</label>
+                        <input type="text" class="form-control" id="phone" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary" id="saveCustomer">Submit</button>
                     <button type="button" class="btn btn-secondary" id="cancelAddCustomer">Cancel</button>
                 </form>
             </div>
@@ -308,7 +292,7 @@
 <main class="container" id="addItemForm">
     <div class="container-fluid header">
         <div class="logo-section">
-            <img src="logo.png" alt="Company Logo" class="logo">
+<!--            <img src="logo.png" alt="Company Logo" class="logo">-->
             <h1>Inventory Management</h1>
         </div>
     </div>
@@ -329,7 +313,7 @@
                     <input type="number" class="form-control" id="quantity" placeholder="Enter item quantity" required>
                 </div>
                 <div class="button-group">
-                    <button type="submit" class="btn primary-btn">Submit</button>
+                    <button type="submit" class="btn primary-btn" id="saveItem">Submit</button>
                     <button type="button" class="btn danger-btn" id="cancelAddItem">Cancel</button>
                 </div>
             </form>
@@ -342,114 +326,7 @@
     <p>&copy; 2024 POS Management System. All rights reserved.</p>
 </footer>
 <script src="lib/jquery-3.7.1.min.js"></script>
-<script>
-
-    let dashboard_nav = document.getElementById("dashboardNav");
-    let customer_nav = document.getElementById("customerNav");
-    let item_nav = document.getElementById("itemNav");
-    let order_nav = document.getElementById("orderNav");
-
-    let dashboard_section = document.getElementById("dashboardPage");
-    let customer_section = document.getElementById("customerPage");
-    let item_section = document.getElementById("itemPage");
-    let order_section = document.getElementById("orderPage");
-    let addCustomer=document.getElementById("addCustomerForm");
-    let addItem=document.getElementById("addItemForm");
-
-    let btnAddCustomer=document.getElementById("btnAddNewCustomer");
-    let btnAddItem=document.getElementById("btnAddItem");
-
-
-    let cancelAddItem=document.getElementById("cancelAddItem");
-    let cancelAddCustomer=document.getElementById("cancelAddCustomer");
-
-
-
-    dashboard_section.style.display="block";
-    customer_section.style.display="none";
-    item_section.style.display="none";
-    order_section.style.display="none";
-    addCustomer.style.display="none";
-    addItem.style.display="none";
-
-
-    customer_nav.addEventListener('click', function () {
-
-        customer_section.style.display="block";
-        item_section.style.display="none";
-        order_section.style.display="none";
-        addCustomer.style.display="none";
-        addItem.style.display="none";
-        dashboard_section.style.display="none";
-    });
-
-    dashboard_nav.addEventListener('click', function () {
-        dashboard_section.style.display="block"
-        customer_section.style.display="none";
-        item_section.style.display="none";
-        order_section.style.display="none";
-        addCustomer.style.display="none";
-        addItem.style.display="none";
-    })
-    item_nav.addEventListener('click', function () {
-        dashboard_section.style.display="none";
-        customer_section.style.display="none";
-        item_section.style.display="block";
-        order_section.style.display="none";
-        addCustomer.style.display="none";
-        addItem.style.display="none";
-    });
-    order_nav.addEventListener('click', function () {
-        dashboard_section.style.display="none";
-        customer_section.style.display="none";
-        item_section.style.display="none";
-        order_section.style.display="block";
-        addCustomer.style.display="none";
-        addItem.style.display="none";
-    });
-
-    btnAddCustomer.addEventListener('click',function (){
-    dashboard_section.style.display="none";
-    customer_section.style.display="none";
-    item_section.style.display="none";
-    order_section.style.display="none";
-    addCustomer.style.display="block";
-    addItem.style.display="none";
-})
-
-    btnAddItem.addEventListener('click',function (){
-        addItem.style.display="block";
-        dashboard_section.style.display="none";
-        customer_section.style.display="none";
-        item_section.style.display="none";
-        order_section.style.display="none";
-        addCustomer.style.display="none";
-    })
-
-    cancelAddCustomer.addEventListener('click',function (){
-        addCustomer.style.display="none";
-        dashboard_section.style.display="none";
-        customer_section.style.display="block";
-        item_section.style.display="none";
-        order_section.style.display="none";
-        addItem.style.display="none";
-    })
-
-    cancelAddItem.addEventListener('click',function (){
-        addItem.style.display="none";
-        dashboard_section.style.display="none";
-        customer_section.style.display="none";
-        item_section.style.display="block";
-        order_section.style.display="none";
-        addCustomer.style.display="none";
-    })
-
-
-</script>
-
-
-
-
+<script src="script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
