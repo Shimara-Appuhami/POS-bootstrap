@@ -790,3 +790,17 @@ header.header {
         align-items: stretch;
     }
 }
+
+/*======================================*/
+#orderPage {
+  margin-top:100px;
+}
+.input-group {
+    margin-bottom: 15px;
+}
+.left-side {
+    width: 50%;
+}
+.right-side {
+    width: 50%;
+}
