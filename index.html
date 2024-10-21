@@ -124,7 +124,7 @@
     </header>
     <main class="content">
         <div class="toolbar">
-            <button class="btn primary">+ Add Customer</button>
+            <button class="btn primary" id="btnAddNewCustomer">+ Add Customer</button>
             <input type="search" class="search-input" placeholder="Search by Name, ID, or Email">
         </div>
 
@@ -167,7 +167,7 @@
         <section class="container mt-5">
 <!--            <h1>Item Details</h1>-->
             <div class="toolbar">
-                <button type="button" class="btn primary">+ Add Item</button>
+                <button type="button" class="btn primary" id="btnAddItem">+ Add Item</button>
                 <input type="search" class="search-input" placeholder="Search by item ID , Name">
             </div>
 
@@ -297,7 +297,7 @@
                         <input type="text" class="form-control" id="number" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
-                    <button type="button" class="btn btn-secondary">Cancel</button>
+                    <button type="button" class="btn btn-secondary" id="cancelAddCustomer">Cancel</button>
                 </form>
             </div>
         </div>
@@ -330,7 +330,7 @@
                 </div>
                 <div class="button-group">
                     <button type="submit" class="btn primary-btn">Submit</button>
-                    <button type="button" class="btn danger-btn" id="cancel">Cancel</button>
+                    <button type="button" class="btn danger-btn" id="cancelAddItem">Cancel</button>
                 </div>
             </form>
         </section>
@@ -355,6 +355,14 @@
     let order_section = document.getElementById("orderPage");
     let addCustomer=document.getElementById("addCustomerForm");
     let addItem=document.getElementById("addItemForm");
+
+    let btnAddCustomer=document.getElementById("btnAddNewCustomer");
+    let btnAddItem=document.getElementById("btnAddItem");
+
+
+    let cancelAddItem=document.getElementById("cancelAddItem");
+    let cancelAddCustomer=document.getElementById("cancelAddCustomer");
+
 
 
     dashboard_section.style.display="block";
@@ -400,7 +408,41 @@
         addItem.style.display="none";
     });
 
+    btnAddCustomer.addEventListener('click',function (){
+    dashboard_section.style.display="none";
+    customer_section.style.display="none";
+    item_section.style.display="none";
+    order_section.style.display="none";
+    addCustomer.style.display="block";
+    addItem.style.display="none";
+})
 
+    btnAddItem.addEventListener('click',function (){
+        addItem.style.display="block";
+        dashboard_section.style.display="none";
+        customer_section.style.display="none";
+        item_section.style.display="none";
+        order_section.style.display="none";
+        addCustomer.style.display="none";
+    })
+
+    cancelAddCustomer.addEventListener('click',function (){
+        addCustomer.style.display="none";
+        dashboard_section.style.display="none";
+        customer_section.style.display="block";
+        item_section.style.display="none";
+        order_section.style.display="none";
+        addItem.style.display="none";
+    })
+
+    cancelAddItem.addEventListener('click',function (){
+        addItem.style.display="none";
+        dashboard_section.style.display="none";
+        customer_section.style.display="none";
+        item_section.style.display="block";
+        order_section.style.display="none";
+        addCustomer.style.display="none";
+    })
 
 
 </script>
