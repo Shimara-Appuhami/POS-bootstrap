@@ -97,14 +97,15 @@ cancelAddItem.addEventListener('click',function (){
 
 
 //save customer
-    let customer_array = [];
-    let c_id=customer_array.length+1;
-    function loadCustomerTable() {
-        const customerTableBody = $("#customerTableBody");
-        customerTableBody.empty(); // Clear previous entries
+let customer_array = [];
+let c_id = customer_array.length + 1;
 
-        customer_array.forEach((customer) => {
-            let customers = `<tr>
+function loadCustomerTable(customers = customer_array) {
+    const customerTableBody = $("#customerTableBody");
+    customerTableBody.empty(); // Clear previous entries
+
+    customers.forEach((customer) => {
+        let row = `<tr>
             <td>${customer.id}</td>
             <td>${customer.name}</td>
             <td>${customer.address}</td>
@@ -112,58 +113,70 @@ cancelAddItem.addEventListener('click',function (){
             <td>${customer.email}</td>
             <td>${customer.phone}</td>
         </tr>`;
-            customerTableBody.append(customers);
-        });
-    }
-
-    $("#saveCustomer").on("click", function () {
-        let name = $("#name").val();
-        let address = $("#address").val();
-        let nic = $("#nic").val();
-        let email = $("#email").val();
-        let phone = $("#phone").val();
-
-        if (name && address && nic && email && phone) {
-            let customer = {
-                id: c_id,
-                name: name,
-                address: address,
-                nic: nic,
-                email: email,
-                phone: phone
-            };
-            customer_array.push(customer);
-            loadCustomerTable();
-
-            // Reset the form
-            $("#id,#name, #address, #nic, #email, #phone").val("");
-            $("#dashboardPage, #addCustomerForm, #addItemForm, #itemPage, #orderPage").hide();
-            $("#customerPage").show();
-
-            c_id++;
-
-        } else {
-            alert("Please fill all fields.");
-        }
+        customerTableBody.append(row);
     });
+}
 
+$("#saveCustomer").on("click", function () {
+    let name = $("#name").val();
+    let address = $("#address").val();
+    let nic = $("#nic").val();
+    let email = $("#email").val();
+    let phone = $("#phone").val();
 
+    if (name && address && nic && email && phone) {
+        let customer = {
+            id: c_id,
+            name: name,
+            address: address,
+            nic: nic,
+            email: email,
+            phone: phone
+        };
+        customer_array.push(customer);
+        loadCustomerTable();
+
+        $("#id, #name, #address, #nic, #email, #phone").val("");
+        $("#dashboardPage, #addCustomerForm, #addItemForm, #itemPage, #orderPage").hide();
+        $("#customerPage").show();
+
+        c_id++;
+    } else {
+        alert("Please fill all fields.");
+    }
+});
+
+$("#search-input-customer").on("input", function () {
+    const searchTerm = $(this).val().toLowerCase();
+
+    const filteredCustomers = customer_array.filter((customer) =>
+        customer.phone.includes(searchTerm) ||
+        customer.name.toLowerCase().includes(searchTerm) ||
+        customer.id.toString().includes(searchTerm) ||
+        customer.email.toLowerCase().includes(searchTerm)
+    );
+
+    loadCustomerTable(filteredCustomers);
+});
+
+loadCustomerTable();
 
 //save item
 let item_array = [];
-let i_id=item_array.length+1;
-function loadItemTable() {
-    const itemTableBody = $("#itemTableBody");
-    itemTableBody.empty(); // Clear previous entries
+let i_id = item_array.length + 1;
 
-    item_array.forEach((item) => {
-        let items = `<tr>
+function loadItemTable(items = item_array) {
+    const itemTableBody = $("#itemTableBody");
+    itemTableBody.empty();
+
+    items.forEach((item) => {
+        let row = `<tr>
             <td>${item.i_id}</td>
             <td>${item.name1}</td>
             <td>${item.price}</td>
             <td>${item.quantity}</td>
         </tr>`;
-        itemTableBody.append(items);
+        itemTableBody.append(row);
     });
 }
 
@@ -176,21 +189,74 @@ $("#saveItem").on("click", function () {
         let item = {
             i_id: i_id,
             name1: name1,
-            price: price,
-            quantity: quantity,
-
+            price: parseFloat(price),
+            quantity: parseInt(quantity)
         };
+
         item_array.push(item);
         loadItemTable();
 
-        // Reset the form
         $("#name1, #price, #quantity").val("");
         $("#dashboardPage, #addCustomerForm, #addItemForm, #customerPage, #orderPage").hide();
         $("#itemPage").show();
 
         i_id++;
-
     } else {
         alert("Please fill all fields.");
     }
+});
+
+// Search functionality
+$("#searchInput").on("input", function () {
+    const searchTerm = $(this).val().toLowerCase();
+
+    const filteredItems = item_array.filter((item) =>
+        item.name1.toLowerCase().includes(searchTerm) ||
+        item.i_id.toString().includes(searchTerm)
+    );
+
+    loadItemTable(filteredItems);
+});
+
+loadItemTable();
+
+
+//save order
+
+const orderForm = document.getElementById('orderForm');
+const itemSelect = document.getElementById('itemSelect');
+const qtyInput = document.getElementById('qty');
+const selectedItemsBody = document.getElementById('selectedItemsBody');
+const totalAmountElement = document.getElementById('totalAmount');
+
+let totalAmount = 0;
+
+orderForm.addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent form submission
+
+    const customerName = document.getElementById('customerName').value;
+    const selectedItem = itemSelect.options[itemSelect.selectedIndex];
+    const itemName = selectedItem.text;
+    const itemPrice = parseFloat(selectedItem.getAttribute('data-price'));
+    const quantity = parseInt(qtyInput.value);
+    const totalItemPrice = itemPrice * quantity;
+
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `
+        <td>${itemName}</td>
+        <td class="right-align">${quantity}</td>
+        <td class="right-align">$${itemPrice.toFixed(2)}</td>
+        <td class="right-align">$${totalItemPrice.toFixed(2)}</td>
+    `;
+    selectedItemsBody.appendChild(newRow);
+
+    totalAmount += totalItemPrice;
+    totalAmountElement.textContent = totalAmount.toFixed(2);
+
+    orderForm.reset();
+});
+
+itemSelect.addEventListener('change', function () {
+    const selectedPrice = parseFloat(itemSelect.options[itemSelect.selectedIndex].getAttribute('data-price'));
+    document.getElementById('unitPrice').value = selectedPrice.toFixed(2);
 });

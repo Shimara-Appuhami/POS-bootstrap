@@ -125,7 +125,7 @@
     <main class="content">
         <div class="toolbar">
             <button class="btn primary" id="btnAddNewCustomer">+ Add Customer</button>
-            <input type="search" class="search-input" placeholder="Search by Name, ID, or Email">
+            <input type="search" class="search-input" id="search-input-customer" placeholder="Search by Name, ID, or Email">
         </div>
 
         <div class="table-container">
@@ -163,7 +163,7 @@
 <!--            <h1>Item Details</h1>-->
             <div class="toolbar">
                 <button type="button" class="btn primary" id="btnAddItem">+ Add Item</button>
-                <input type="search" class="search-input" placeholder="Search by item ID , Name">
+                <input type="search" class="search-input" id="searchInput" placeholder="Search by item ID or Name">
             </div>
 
             <div class="table-container">
@@ -222,12 +222,12 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Add cart</button>
+            <button type="submit" class="btn btn-primary" id="btnAddToCart">Add cart</button>
         </form>
 
 
         <h3 class="mt-4">Order Summary</h3>
-        <table class="table table-bordered mt-3" id="orderTable">
+        <table class="table table-bordered mt-3" id="selectedItemsTable">
             <thead>
             <tr>
                 <th>Item</th>
@@ -236,7 +236,7 @@
                 <th class="right-align">Total</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="selectedItemsBody">
             <!-- Order items will be dynamically inserted here -->
             </tbody>
         </table>
