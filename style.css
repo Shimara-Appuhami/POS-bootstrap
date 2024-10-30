@@ -594,7 +594,32 @@ header.header {
 .item-table tbody tr:hover {
     background-color: #f1f1f1;
 }
+#saveItem{
+    width: 100px;
 
+    background-color: #2196F3;
+    color: white;
+}
+#btnUpdateItem{
+    width: 100px;
+    display: inline;
+
+    background-color: #ffae00;
+    color: white;
+
+}
+#btnDeleteItem{
+    width: 100px;
+    display: inline;
+
+    background-color: #f44336;
+    color: white;
+}
+#cancelAddItem{
+    width: 100px;
+    background-color: rgba(147, 142, 142, 0.15);
+    color: white;
+}
 /* Button Group */
 .button-group {
     display: flex;
@@ -612,13 +637,6 @@ header.header {
 }
 
 /*new order button*/
-.btn.primary {
-    width: 300px;
-
-    background-color: #4CAF50;
-    color: white;
-}
-
 .btn.primary:hover {
     background-color: #45a049;
 }
@@ -804,3 +822,5 @@ header.header {
 .right-side {
     width: 50%;
 }
+
+/*========================*/
