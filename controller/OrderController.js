@@ -127,6 +127,7 @@ $("#orderPage").on("submit", function (event) {
     }
 });
 
+
 //update the order summary table with selected items
 function updateOrderSummary() {
     const selectedItemsBody = $("#selectedItemsBody");
