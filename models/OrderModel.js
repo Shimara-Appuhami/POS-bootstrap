@@ -1,12 +1,15 @@
 export default class OrderModel{
-    constructor(id,item_id,customer_id,price,qty,total) {
+    constructor(id,itemId,customerId,price,qty,total) {
+
         this._id = id;
-        this._item_id = item_id;
-        this._customer_id = customer_id;
         this._price = price;
         this._qty = qty;
         this._total = total;
+        this._itemId = itemId;
+        this._customerId = customerId;
+
     }
+
 
     get id() {
         return this._id;
@@ -16,20 +19,20 @@ export default class OrderModel{
         this._id = value;
     }
 
-    get item_id() {
-        return this._item_id;
+    get itemId() {
+        return this._itemId;
     }
 
-    set item_id(value) {
-        this._item_id = value;
+    set itemId(value) {
+        this._itemId = value;
     }
 
-    get customer_id() {
-        return this._customer_id;
+    get customerId() {
+        return this._customerId;
     }
 
-    set customer_id(value) {
-        this._customer_id = value;
+    set customerId(value) {
+        this._customerId = value;
     }
 
     get price() {
@@ -55,4 +58,5 @@ export default class OrderModel{
     set total(value) {
         this._total = value;
     }
+
 }

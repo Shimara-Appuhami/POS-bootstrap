@@ -193,30 +193,38 @@
         <form id="orderForm">
             <div class="row">
                 <div class="col left-side">
+
                     <div class="mb-3">
-                        <label for="customerName" class="form-label">Customer Name</label>
-                        <input type="text" class="form-control" id="customerName" required>
+                        <label for="itemId" class="form-label">Item ID</label>
+                        <input type="text" class="form-control" id="itemId" required>
                     </div>
                     <div class="mb-3">
-                        <label for="itemSelect" class="form-label">Select Item</label>
-                        <select class="form-select" id="itemSelect" required>
-                            <option value="" disabled selected>Select an item</option>
-                            <!-- Items will be populated here -->
-                        </select>
+                        <label for="itemName" class="form-label">Item Name</label>
+                        <input type="text" class="form-control" id="itemName" required>
                     </div>
-                </div>
-                <div class="col right-side">
                     <div class="mb-3">
                         <label for="unitPrice" class="form-label">Unit Price</label>
-                        <input type="text" class="form-control" id="unitPrice" readonly>
+                        <input type="text" class="form-control" id="unitPrice" required>
                     </div>
                     <div class="mb-3">
                         <label for="qty" class="form-label">Quantity</label>
                         <input type="number" class="form-control" id="qty" min="1" required>
                     </div>
                 </div>
+                <div class="col right-side">
+                    <div class="mb-3">
+                        <label for="customerContact" class="form-label">Contact</label>
+                        <input type="text" class="form-control" id="customerContact" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="customerName" class="form-label">Customer Name</label>
+                        <input type="text" class="form-control" id="customerName" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="btnAddToCart">Add to Cart</button>
+
+
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary" id="btnAddToCart">Add to Cart</button>
         </form>
 
         <h3 class="mt-4">Order Summary</h3>
