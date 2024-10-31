@@ -42,13 +42,13 @@ $("#itemId").on("keypress", function (e) {
         let item_id = $(this).val().trim();
 
         // Corrected the find method syntax
-        let item = item_array.find(c => c.id === item_id); // Assuming 'id' is the property for item ID
+        let item = item_array.find(c => c.id === item_id);
 
         if (item) {
-            $("#itemName").val(item._name1); // Use the correct property for the item name (e.g., name1)
+            $("#itemName").val(item._name1);
         } else {
             Swal.fire("Error", "Item not found.", "error");
-            $("#itemName").val(''); // Clear the name field if not found
+            $("#itemName").val('');
         }
     }
 });
@@ -65,7 +65,6 @@ document.getElementById('orderForm').addEventListener('submit', function (e) {
     // Calculate total for the item
     const total = unitPrice * qty;
 
-    // Append new row to order summary table
     const tableBody = document.getElementById('selectedItemsBody');
     const newRow = document.createElement('tr');
     newRow.innerHTML = `
@@ -86,23 +85,22 @@ document.getElementById('orderForm').addEventListener('submit', function (e) {
 });
 
 
-// Function to find and display item details by item ID
+
 $("#itemId").on("blur", function () {
-    const itemId = $(this).val(); // Get entered item ID
-    const item = item_array.find(itm => itm.id === itemId); // Find item by ID
+    const itemId = $(this).val();
+    const item = item_array.find(itm => itm.id === itemId);
 
     if (item) {
-        $("#itemName").val(item.name); // Set item name
-        $("#unitPrice").val(item.price); // Set unit price
+        $("#itemName").val(item.name);
+        $("#unitPrice").val(item.price);
     } else {
-        $("#itemName").val(""); // Clear item name if not found
-        $("#unitPrice").val(""); // Clear unit price if not found
-        Swal.fire("Error", "Item not found!", "error"); // Show alert if item is not found
+        $("#itemName").val("");
+        $("#unitPrice").val("");
+        Swal.fire("Error", "Item not found!", "error");
     }
 });
-// Function to add item to the cart when form is submitted
 $("#orderPage").on("submit", function (event) {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault();
 
     const itemId = $("#itemId").val();
     const quantity = parseInt($("#qty").val());
@@ -118,10 +116,9 @@ $("#orderPage").on("submit", function (event) {
             total: totalPrice
         });
 
-        totalAmount += totalPrice; // Update total amount
+        totalAmount += totalPrice;
         updateOrderSummary();
 
-        // Clear fields for next item
         $("#qty").val(1);
         $("#itemId").val("");
         $("#unitPrice").val("");
@@ -130,7 +127,7 @@ $("#orderPage").on("submit", function (event) {
     }
 });
 
-// Function to update the order summary table with selected items
+//update the order summary table with selected items
 function updateOrderSummary() {
     const selectedItemsBody = $("#selectedItemsBody");
     selectedItemsBody.empty(); // Clear previous items
@@ -146,10 +143,9 @@ function updateOrderSummary() {
         `);
     });
 
-    $("#totalAmount").text(totalAmount); // Update total amount display
+    $("#totalAmount").text(totalAmount);
 }
 
-// Initialize script on page load
 $(document).ready(function () {
-    populateItemSelect(); // Populate the item dropdown on load
+    populateItemSelect();
 });
