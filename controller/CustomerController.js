@@ -184,17 +184,15 @@ $("#btnDeleteCustomer").on("click", function (event) {
 //     return regexPhone.test(phone);
 // }
 
-
-//save customer
+// Save customer
 $("#saveCustomer").on("click", function (event) {
-
     let name = $("#name").val().trim();
     let address = $("#address").val().trim();
     let nic = $("#nic").val().trim();
     let email = $("#email").val().trim();
     let phone = $("#phone").val().trim();
 
-    //validations
+    // validations
     if (name.length === 0) {
         Swal.fire({
             title: "Validation Error",
@@ -212,7 +210,6 @@ $("#saveCustomer").on("click", function (event) {
         });
         return;
     }
-
 
     if (nic.length === 0) {
         Swal.fire({
@@ -241,8 +238,18 @@ $("#saveCustomer").on("click", function (event) {
         return;
     }
 
-    //validations pass
-     Swal.fire({
+    let customer = {
+        id: c_id,
+        name: name,
+        address: address,
+        nic: nic,
+        email: email,
+        phone: phone
+    };
+
+    customer_array.push(customer);
+
+    Swal.fire({
         position: "center",
         icon: "success",
         title: "Customer saved successfully!",
@@ -250,48 +257,28 @@ $("#saveCustomer").on("click", function (event) {
         timer: 1500
     });
 
+    loadCustomerTable();
+
+    $("#id, #name, #address, #nic, #email, #phone").val("");
+
+    $("#dashboardPage, #addCustomerForm, #addItemForm, #itemPage, #orderPage").hide();
+    $("#customerPage").show();
+
+    c_id++;
 });
 
-// Example email validation
+// email validation
 function validateEmail(email) {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
 }
 
-// Example phone validation
+// phone validation
 function validatePhone(phone) {
     const regex = /^[0-9]{10}$/;
     return regex.test(phone);
 }
 
-
-$("#saveCustomer").on("click", function () {
-    let name = $("#name").val();
-    let address = $("#address").val();
-    let nic = $("#nic").val();
-    let email = $("#email").val();
-    let phone = $("#phone").val();
-
-    if (name && address && nic && email && phone) {
-        let customer = {
-            id: c_id,
-            name: name,
-            address: address,
-            nic: nic,
-            email: email,
-            phone: phone
-        };
-        customer_array.push(customer);
-        loadCustomerTable();
-
-        $("#id, #name, #address, #nic, #email, #phone").val("");
-        $("#dashboardPage, #addCustomerForm, #addItemForm, #itemPage, #orderPage").hide();
-        $("#customerPage").show();
-
-        c_id++;
-    } else {
-    }
-});
 
 $("#search-input-customer").on("input", function () {
     const searchTerm = $(this).val().toLowerCase();
