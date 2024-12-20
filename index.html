@@ -59,8 +59,7 @@
                     <div class="col-md-4">
                         <div class="card text-white bg-success mb-4">
                             <div class="card-body">
-                                <h5 class="card-title">Total Sales</h5>
-                                <p class="card-text">Rs.10,000</p>
+                                <img class="card-title" src="assets/images/img_13.png">
                             </div>
                         </div>
                     </div>
@@ -68,7 +67,7 @@
                         <div class="card text-white bg-info mb-4">
                             <div class="card-body">
                                 <h5 class="card-title">Total Products</h5>
-                                <p class="card-text">250</p>
+                                <p class="card-text">0</p>
                             </div>
                         </div>
                     </div>
@@ -76,7 +75,7 @@
                         <div class="card text-white bg-warning mb-4">
                             <div class="card-body">
                                 <h5 class="card-title">Total Customers</h5>
-                                <p class="card-text">150</p>
+                                <p class="card-text">0</p>
                             </div>
                         </div>
                     </div>
@@ -92,22 +91,13 @@
                         <th>Amount</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td>2024-10-21</td>
-                        <td>John Doe</td>
-                        <td>$100</td>
-                    </tr>
-                    <tr>
-                        <td>2024-10-20</td>
-                        <td>Jane Smith</td>
-                        <td>$150</td>
-                    </tr>
-                    <tr>
-                        <td>2024-10-19</td>
-                        <td>Mike Johnson</td>
-                        <td>$200</td>
-                    </tr>
+                    <tbody id="total-table-dashboard">
+<!--                    <tr>-->
+<!--                        <td>2024-10-21</td>-->
+<!--                        <td>John Doe</td>-->
+<!--                        <td>$100</td>-->
+<!--                    </tr>-->
+
                     </tbody>
                 </table>
 <!--            </main>-->
@@ -221,6 +211,8 @@
                         <input type="text" class="form-control" id="customerName" required>
                     </div>
                     <button type="submit" class="btn btn-primary" id="btnAddToCart">Add to Cart</button>
+                    <button type="submit" class="btn btn-primary" id="btnPrintBill">Print Bill</button>
+
 
 
                 </div>
@@ -242,7 +234,7 @@
             </tbody>
         </table>
 
-        <h4 class="mt-3">Total Amount: Rs.<span id="totalAmount">0</span></h4>
+        <h4 id="total-tag" class="mt-3">Total Amount: Rs.<span id="totalAmount">0</span></h4>
     </div>
 </main>
 
@@ -325,6 +317,7 @@
         </section>
     </main>
 </main>
+
 
 <!--footer-->
 <footer class="footer">

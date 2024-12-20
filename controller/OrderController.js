@@ -7,7 +7,6 @@ let selectedItems = [];
 let totalAmount = 0;
 
 
-// // Populate item dropdown from item_array
 // function populateItemSelect() {
 //     const itemSelect = $("#itemSelect");
 //     itemSelect.empty(); // Clear any existing options
@@ -17,7 +16,6 @@ let totalAmount = 0;
 //     });
 // }
 
-// Sample customer array (replace this with your actual customer data source)
 
 // customer search and order
 $("#customerContact").on("keypress", function (e) {
@@ -35,20 +33,31 @@ $("#customerContact").on("keypress", function (e) {
         }
     }
 });
+
+
+//find the item
 $("#itemId").on("keypress", function (e) {
     if (e.which === 13) { // Check if Enter key is pressed
         e.preventDefault();
 
-        let item_id = $(this).val().trim();
+        let itemId = $(this).val();
 
-        // Corrected the find method syntax
-        let item = item_array.find(c => c.id === item_id);
+        let item = item_array.find(i => i.id.toString() === itemId.toString());
 
         if (item) {
-            $("#itemName").val(item._name1);
+            Swal.fire({
+                title: "Item found!",
+                icon: "success",
+                draggable: true
+            });
+
+            $("#itemName").val(item.name);
+            $("#unitPrice").val(item.price);
         } else {
-            Swal.fire("Error", "Item not found.", "error");
+            // Show error message and clear fields
+            Swal.fire("Error", "Item not found!", "error");
             $("#itemName").val('');
+            $("#unitPrice").val('');
         }
     }
 });
@@ -56,13 +65,13 @@ $("#itemId").on("keypress", function (e) {
 document.getElementById('orderForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
-    // Collect item data from form inputs
+    // collect item data from form inputs
     const itemId = document.getElementById('itemId').value;
     const itemName = document.getElementById('itemName').value;
     const unitPrice = parseFloat(document.getElementById('unitPrice').value);
     const qty = parseInt(document.getElementById('qty').value);
 
-    // Calculate total for the item
+    // calculate total for the item
     const total = unitPrice * qty;
 
     const tableBody = document.getElementById('selectedItemsBody');
@@ -75,30 +84,29 @@ document.getElementById('orderForm').addEventListener('submit', function (e) {
     `;
     tableBody.appendChild(newRow);
 
-    // Update total amount
+    // update total amount
     const totalAmountElement = document.getElementById('totalAmount');
     const currentTotal = parseFloat(totalAmountElement.textContent) || 0;
     totalAmountElement.textContent = (currentTotal + total).toFixed(2);
 
-    // Clear form fields after adding to cart
     document.getElementById('orderForm').reset();
 });
 
 
 
-$("#itemId").on("blur", function () {
-    const itemId = $(this).val();
-    const item = item_array.find(itm => itm.id === itemId);
-
-    if (item) {
-        $("#itemName").val(item.name);
-        $("#unitPrice").val(item.price);
-    } else {
-        $("#itemName").val("");
-        $("#unitPrice").val("");
-        Swal.fire("Error", "Item not found!", "error");
-    }
-});
+// $("#itemId").on("blur", function () {
+//     const itemId = $(this).val();
+//     const item = item_array.find(itm => itm.id === itemId);
+//
+//     if (item) {
+//         $("#itemName").val(item._name1);
+//         $("#unitPrice").val(item.price);
+//     } else {
+//         $("#itemName").val("");
+//         $("#unitPrice").val("");
+//         Swal.fire("Error", "Item not found!", "error");
+//     }
+// });
 $("#orderPage").on("submit", function (event) {
     event.preventDefault();
 
@@ -106,7 +114,6 @@ $("#orderPage").on("submit", function (event) {
     const quantity = parseInt($("#qty").val());
     const selectedItem = item_array.find(item => item.id == itemId);
 
-    // Validate selected item and quantity
     if (selectedItem && quantity > 0) {
         const totalPrice = selectedItem.price * quantity;
         selectedItems.push({
@@ -128,7 +135,7 @@ $("#orderPage").on("submit", function (event) {
 });
 
 
-//update the order summary table with selected items
+//update the order summary
 function updateOrderSummary() {
     const selectedItemsBody = $("#selectedItemsBody");
     selectedItemsBody.empty(); // Clear previous items
@@ -150,3 +157,176 @@ function updateOrderSummary() {
 $(document).ready(function () {
     populateItemSelect();
 });
+
+//print bill
+document.getElementById("btnPrintBill").addEventListener("click", function (event) {
+    event.preventDefault();
+
+    let orderItems = [];
+    let totalAmount = 0;
+
+    const itemsTable = document.getElementById("selectedItemsBody").children;
+    for (let i = 0; i < itemsTable.length; i++) {
+        let row = itemsTable[i];
+        let itemName = row.cells[0].innerText;
+        let qty = row.cells[1].innerText;
+        let price = row.cells[2].innerText;
+        let total = row.cells[3].innerText;
+
+        orderItems.push({ itemName, qty, price, total });
+        totalAmount += parseFloat(total);
+    }
+
+    let currentDateTime = new Date();
+    let formattedDate = currentDateTime.toLocaleDateString();
+    let formattedTime = currentDateTime.toLocaleTimeString();
+
+    let billContent = `
+        <h2>Order Bill</h2>
+        <p><strong>Date:</strong> ${formattedDate}</p>
+        <p><strong>Time:</strong> ${formattedTime}</p>
+        <table border="1" cellpadding="10" cellspacing="0" style="width: 100%; margin-top: 20px; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>`;
+
+    orderItems.forEach(item => {
+        billContent += `
+            <tr>
+                <td>${item.itemName}</td>
+                <td>${item.qty}</td>
+                <td>${item.price}</td>
+                <td>${item.total}</td>
+            </tr>`;
+    });
+
+    billContent += `
+        </tbody>
+        </table>
+        <h3 style="margin-top: 20px;">Total Amount: Rs.${totalAmount}</h3>
+    `;
+
+    // 0pen new window and print the bill
+    let printWindow = window.open('', '', 'height=800,width=1500');
+    printWindow.document.write('<html><head><h1>Timber n Taste</h1></head></html>')
+    printWindow.document.write('<html><head><title>Order Bill</title></head><body>');
+    printWindow.document.write(billContent);
+    printWindow.document.write('</body></html>');
+    printWindow.document.close();
+    printWindow.print();
+});
+
+// add to cart
+document.getElementById("btnAddToCart").addEventListener("click", function (event) {
+    event.preventDefault();
+
+    let itemId = document.getElementById("itemId").value;
+    let itemName = document.getElementById("itemName").value;
+    let unitPrice = parseFloat(document.getElementById("unitPrice").value);
+    let qty = parseInt(document.getElementById("qty").value);
+
+    let total = unitPrice * qty;
+
+    let tableBody = document.getElementById("selectedItemsBody");
+    let newRow = document.createElement("tr");
+
+    newRow.innerHTML = `
+        <td>${itemName}</td>
+        <td class="quantity">${qty}</td>
+        <td class="price">${unitPrice}</td>
+        <td class="total">${total}</td>
+        <td>
+            <button style="background: #ff2020" class="btn-remove">Remove</button>
+        </td>
+    `;
+
+    tableBody.appendChild(newRow);
+
+    updateTotalAmount();
+});
+
+//quantity decrease
+document.getElementById("selectedItemsBody").addEventListener("click", function (event) {
+    if (event.target.classList.contains("btn-decrease")) {
+        let row = event.target.closest("tr");
+        let quantityCell = row.querySelector(".quantity");
+        let priceCell = row.querySelector(".price");
+        let totalCell = row.querySelector(".total");
+
+        let currentQty = parseInt(quantityCell.textContent);
+        if (currentQty > 1) {
+            //decrease
+            currentQty--;
+            quantityCell.textContent = currentQty;
+
+            let price = parseFloat(priceCell.textContent);
+            totalCell.textContent = (currentQty * price).toFixed(2);
+
+            updateTotalAmount();
+        }
+    }
+
+    if (event.target.classList.contains("btn-remove")) {
+        let row = event.target.closest("tr");
+        row.remove();
+        updateTotalAmount();
+    }
+});
+
+function updateTotalAmount() {
+    let totalAmount = 0;
+    let rows = document.querySelectorAll("#selectedItemsBody tr");
+
+    rows.forEach(row => {
+        let total = parseFloat(row.querySelector(".total").textContent);
+        totalAmount += total;
+    });
+
+    document.getElementById("totalAmount").textContent = totalAmount.toFixed(2);
+}
+
+// place order and save transaction
+function placeOrder() {
+
+    const customerName = document.getElementById('customerName').value;
+    const totalAmount = document.getElementById('totalAmount').textContent;
+    const orderDate = new Date().toLocaleString();
+
+    if (customerName && totalAmount) {
+
+        const tableBody = document.getElementById('total-table-dashboard');
+        const newRow = document.createElement('tr');
+
+        newRow.innerHTML = `
+            <td>${orderDate}</td>
+            <td>${customerName}</td>
+            <td>Rs. ${totalAmount}</td>
+        `;
+
+        tableBody.appendChild(newRow);
+        order_array.length = 0;
+
+        const table_Body = document.getElementById('selectedItemsBody');
+        table_Body.innerHTML = '';
+
+
+        document.getElementById('orderForm').reset();
+    } else {
+        alert("Please fill in all the required fields.");
+    }
+}
+
+document.getElementById('btnPrintBill').addEventListener('click', function(event) {
+    event.preventDefault();
+    placeOrder();
+
+
+});
+
+

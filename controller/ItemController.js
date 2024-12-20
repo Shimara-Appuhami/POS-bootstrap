@@ -55,6 +55,8 @@ $("#saveItem").on("click", function (event) {
     loadItemTable();
     clearForm();
 
+    console.log(item_array)
+
     Swal.fire("Success", "Item added successfully!", "success");
 });
 
@@ -142,7 +144,6 @@ $("#cancelAddItem").on("click", function () {
     Swal.fire("Cancelled", "Item form cleared.", "info");
 });
 
-// Handle table row click to select an item for editing
 $("#itemTableBody").on("click", "tr", function () {
     selectedItemIndex = $(this).data("index");
     const selectedItem = item_array[selectedItemIndex];
@@ -152,4 +153,49 @@ $("#itemTableBody").on("click", "tr", function () {
     $("#quantity").val(selectedItem.quantity);
 });
 
+
+$("#itemId").on("keypress", function (e) {
+    if (e.which === 13) {
+        e.preventDefault();
+
+        let itemId = $(this).val().trim();
+
+        let item = item_array.find(i => i.id === itemId);
+
+        if (item) {
+            $("#itemName").val(item.name1);
+            $("#unitPrice").val(item.price);
+        } else {
+            Swal.fire("Error", "Item not found!", "error");
+            $("#itemName").val('');
+            $("#unitPrice").val('');
+        }
+    }
+});
+
 loadItemTable();
+
+//product count
+function updateProductCount() {
+    const itemTableBody = document.getElementById("itemTableBody");
+    const totalProductsElement = document.querySelector(".dashboardBody .bg-info .card-text");
+
+    const productCount = itemTableBody.rows.length;
+    totalProductsElement.textContent = productCount;
+}
+
+document.getElementById("btnAddItem").addEventListener("click", function () {
+    const itemTableBody = document.getElementById("itemTableBody");
+
+    const newRow = itemTableBody.insertRow();
+    newRow.innerHTML = `
+        <td>ITM001</td>
+        <td>Sample Item</td>
+        <td>100</td>
+        <td>10</td>
+    `;
+
+    updateProductCount();
+});
+
+updateProductCount();

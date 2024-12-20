@@ -4,7 +4,6 @@ export default class ItemModel{
         this._name1 = name1;
         this._price = price;
         this._quantity = quantity;
-        this._name1 = name1;
     }
 
 

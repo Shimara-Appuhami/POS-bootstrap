@@ -129,7 +129,7 @@ $("#btnDeleteCustomer").on("click", function (event) {
         if (result.isConfirmed) {
             const id = $("#nic").val().trim();
 
-            // Check if the NIC/ID field is filled
+            // check if the NIC/ID field is filled
             if (!id) {
                 swalWithBootstrapButtons.fire({
                     title: "Error",
@@ -307,3 +307,45 @@ $("#search-input-customer").on("input", function () {
 });
 
 loadCustomerTable();
+
+//customer count
+function addCustomer(id, name, address, nic, email, phone) {
+    const customerTableBody = document.getElementById('customerTableBody');
+    const dashboardCustomerCount = document.querySelector('#dashboardPage .card.bg-warning .card-text');
+
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `
+        <td>${id}</td>
+        <td>${name}</td>
+        <td>${address}</td>
+        <td>${nic}</td>
+        <td>${email}</td>
+        <td>${phone}</td>
+    `;
+
+    customerTableBody.appendChild(newRow);
+
+    const currentCount = parseInt(dashboardCustomerCount.textContent, 10);
+    dashboardCustomerCount.textContent = currentCount + 1;
+}
+
+// Example usage:
+document.getElementById('btnAddNewCustomer').addEventListener('click', () => {
+    const sampleCustomer = {
+        id: 'C001',
+        name: 'Jane Doe',
+        address: '123 Main St',
+        nic: 'NIC12345',
+        email: 'jane.doe@example.com',
+        phone: '123-456-7890'
+    };
+
+    addCustomer(
+        sampleCustomer.id,
+        sampleCustomer.name,
+        sampleCustomer.address,
+        sampleCustomer.nic,
+        sampleCustomer.email,
+        sampleCustomer.phone
+    );
+});
